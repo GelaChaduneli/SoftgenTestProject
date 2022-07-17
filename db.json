@@ -1,0 +1,238 @@
+{
+  "students": [
+    {
+      "PN": "09090909090",
+      "FirstName": "gio",
+      "LastName": "giorgadze",
+      "EMail": "incoming@insa-rennes.fr",
+      "BirthDate": "2022-07-20",
+      "id": 11
+    },
+    {
+      "PN": "12312322",
+      "FirstName": "asdasd",
+      "LastName": "sd",
+      "EMail": "asd@gmail.com",
+      "BirthDate": "2022-07-13",
+      "id": 14
+    },
+    {
+      "PN": "123123ddd",
+      "FirstName": "asdasd",
+      "LastName": "Chaghjk",
+      "EMail": "asd@gmail.com",
+      "BirthDate": "2022-07-13",
+      "id": 17
+    },
+    {
+      "PN": "456456",
+      "FirstName": "wsdfsdf",
+      "LastName": "234234",
+      "EMail": "asd@gmail.com",
+      "BirthDate": "2022-07-13",
+      "id": 18
+    }
+  ],
+  "teachers": [
+    {
+      "PN": "12312322414",
+      "FirstName": "teacher13",
+      "LastName": "lastnasd",
+      "EMail": "asjdkl@jasd.ge",
+      "BirthDate": "2022-04-06",
+      "id": 1
+    },
+    {
+      "PN": "12312322414",
+      "FirstName": "პაციენტი05",
+      "LastName": "Chaduneli",
+      "EMail": "asdli888@gmail.com",
+      "BirthDate": "2022-07-29",
+      "id": 2
+    },
+    {
+      "PN": "123123ddd",
+      "FirstName": "zczxc",
+      "LastName": "131d12d",
+      "EMail": "incoming@insa-rennes.fr",
+      "BirthDate": "2022-06-28",
+      "id": 3
+    }
+  ],
+  "groups": [
+    {
+      "GroupNumber": "2",
+      "GroupName": "group22",
+      "Students": [
+        {
+          "PN": "12312322",
+          "FirstName": "asdasd",
+          "LastName": "sd",
+          "EMail": "asd@gmail.com",
+          "BirthDate": "2022-07-13",
+          "id": 14
+        },
+        {
+          "PN": "456456",
+          "FirstName": "wsdfsdf",
+          "LastName": "234234",
+          "EMail": "asd@gmail.com",
+          "BirthDate": "2022-07-13",
+          "id": 18
+        },
+        {
+          "PN": "09090909090",
+          "FirstName": "gio",
+          "LastName": "giorgadze",
+          "EMail": "incoming@insa-rennes.fr",
+          "BirthDate": "2022-07-20",
+          "id": 11
+        }
+      ],
+      "Teachers": [
+        {
+          "PN": "12312322414",
+          "FirstName": "teacher13",
+          "LastName": "lastnasd",
+          "EMail": "asjdkl@jasd.ge",
+          "BirthDate": "2022-04-06",
+          "id": 1
+        },
+        {
+          "PN": "12312322414",
+          "FirstName": "პაციენტი05",
+          "LastName": "Chaduneli",
+          "EMail": "asdli888@gmail.com",
+          "BirthDate": "2022-07-29",
+          "id": 2
+        }
+      ],
+      "id": 2
+    },
+    {
+      "GroupNumber": "2313",
+      "GroupName": "asfasf",
+      "Students": [
+        {
+          "PN": "123123123123",
+          "FirstName": "elene",
+          "LastName": "sdasdasd",
+          "EMail": "asdasd@asdasd.ge",
+          "BirthDate": "2022-07-19",
+          "id": 9
+        },
+        {
+          "PN": "09090909090",
+          "FirstName": "gio",
+          "LastName": "giorgadze",
+          "EMail": "incoming@insa-rennes.fr",
+          "BirthDate": "2022-07-20",
+          "id": 11
+        },
+        {
+          "PN": "12312322",
+          "FirstName": "asdasd",
+          "LastName": "sd",
+          "EMail": "asd@gmail.com",
+          "BirthDate": "2022-07-13",
+          "id": 14
+        },
+        {
+          "PN": "123123",
+          "FirstName": "პაციენტი05d",
+          "LastName": "Chaduneli",
+          "EMail": "g.chads@asd.ge",
+          "BirthDate": "2022-07-28",
+          "id": 16
+        },
+        {
+          "PN": "123123ddd",
+          "FirstName": "asdasd",
+          "LastName": "Chaghjk",
+          "EMail": "asd@gmail.com",
+          "BirthDate": "2022-07-13",
+          "id": 17
+        }
+      ],
+      "Teachers": [
+        {
+          "PN": "12312322414",
+          "FirstName": "teacher13",
+          "LastName": "lastnasd",
+          "EMail": "asjdkl@jasd.ge",
+          "BirthDate": "2022-04-06",
+          "id": 1
+        },
+        {
+          "PN": "12312322414",
+          "FirstName": "პაციენტი05",
+          "LastName": "Chaduneli",
+          "EMail": "asdli888@gmail.com",
+          "BirthDate": "2022-07-29",
+          "id": 2
+        },
+        {
+          "PN": "123123ddd",
+          "FirstName": "zczxc",
+          "LastName": "131d12d",
+          "EMail": "incoming@insa-rennes.fr",
+          "BirthDate": "2022-06-28",
+          "id": 3
+        }
+      ],
+      "id": 3
+    },
+    {
+      "GroupNumber": "141414",
+      "GroupName": "1e1egreoup",
+      "Students": [
+        {
+          "PN": "123123123123",
+          "FirstName": "elene",
+          "LastName": "sdasdasd",
+          "EMail": "asdasd@asdasd.ge",
+          "BirthDate": "2022-07-19",
+          "id": 9
+        },
+        {
+          "PN": "09090909090",
+          "FirstName": "gio",
+          "LastName": "giorgadze",
+          "EMail": "incoming@insa-rennes.fr",
+          "BirthDate": "2022-07-20",
+          "id": 11
+        },
+        {
+          "PN": "12312322",
+          "FirstName": "asdasd",
+          "LastName": "sd",
+          "EMail": "asd@gmail.com",
+          "BirthDate": "2022-07-13",
+          "id": 14
+        }
+      ],
+      "Teachers": [
+        {
+          "PN": "12312322414",
+          "FirstName": "teacher13",
+          "LastName": "lastnasd",
+          "EMail": "asjdkl@jasd.ge",
+          "BirthDate": "2022-04-06",
+          "id": 1
+        },
+        {
+          "PN": "12312322414",
+          "FirstName": "პაციენტი05",
+          "LastName": "Chaduneli",
+          "EMail": "asdli888@gmail.com",
+          "BirthDate": "2022-07-29",
+          "id": 2
+        }
+      ],
+      "id": 4
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

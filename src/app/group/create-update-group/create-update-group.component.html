@@ -1,0 +1,42 @@
+<form [formGroup]="groupForm" (ngSubmit)="createUpdateGroup()">
+    <div class="mb-3">
+        <label for="GroupNumber" class="form-label">Group Number</label>
+        <input type="text" formControlName="GroupNumber" class="form-control" id="GroupNumber"
+            [ngClass]="{ 'is-invalid': submitted && f.GroupNumber.errors }">
+        <div *ngIf="submitted && f.GroupNumber.errors" class="text-danger">
+            <div *ngIf="f.GroupNumber.errors.required">Group number is required</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="GroupName" class="form-label">Group Name</label>
+        <input type="text" formControlName="GroupName" class="form-control" id="GroupName"
+            [ngClass]="{ 'is-invalid': submitted && f.GroupName.errors }">
+        <div *ngIf="submitted && f.GroupName.errors" class="text-danger">
+            <div *ngIf="f.GroupName.errors.required">Group name is required</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <span class="p-fluid" style="position:relative;">
+            <label for="Students" class="form-label">Students</label>
+            <p-multiSelect appendTo="body" class="form-control" id="Students" formControlName="Students"
+                [options]="students" defaultLabel="Select students" optionLabel="FirstName"
+                selectedItemsLabel="{0} items selected">
+            </p-multiSelect>
+        </span>
+    </div>
+    <div class="mb-2">
+        <span class="p-fluid" style="position:relative;">
+            <label for="Teachers" class="form-label">Teachers</label>
+            <p-multiSelect appendTo="body" class="form-control" id="Teachers" formControlName="Teachers"
+                [options]="teachers" defaultLabel="Select teachers" optionLabel="FirstName"
+                selectedItemsLabel="{0} items selected">
+            </p-multiSelect>
+        </span>
+    </div>
+    <div class="mt-2" style="float: right;">
+        <p-button type="submit" [icon]="mode == 'Add'?'pi pi-plus-circle':'pi pi-pencil'" [label]="mode"></p-button>
+        <p-button (onClick)="closeModal('')" type="button" icon="pi pi-times-circle" label="Close"
+            [style]="{'margin-left':'1em'}">
+        </p-button>
+    </div>
+</form>

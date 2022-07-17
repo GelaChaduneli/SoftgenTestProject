@@ -1,0 +1,88 @@
+<p-toast></p-toast>
+
+<div class="row mb-5">
+    <div class="col-md-2">
+        <h5 style="text-align-last: center;">Choose a search field</h5>
+        <span class="p-fluid" style="position:relative;">
+            <p-dropdown (onChange)="resetFilter()" [options]="searchFields" [(ngModel)]="searchField"
+                optionLabel="name"></p-dropdown>
+        </span>
+    </div>
+    <div class="col-md-8">
+        <h5 style="text-align-last: center;">Search</h5>
+        <span class="p-fluid" style="position:relative;">
+            <p-autoComplete (onClear)="resetFilter()" [showEmptyMessage]="true" [(ngModel)]="filterValue" [delay]="500"
+                [suggestions]="teachers" (completeMethod)="filterTeacher($event)"
+                [placeholder]="'type a '+ searchField.name" [field]="searchField.name" [minLength]="1"></p-autoComplete>
+        </span>
+    </div>
+    <div class="col-md-2 text-center">
+        <h5 style="text-align-last: center;">Reset</h5>
+        <span class="p-fluid" style="position:relative;">
+            <button (click)="resetFilter()" title="Resets filter" pButton pRipple type="button" icon="pi pi-refresh"
+                class="p-button-rounded p-button-help"></button>
+        </span>
+    </div>
+</div>
+
+<fieldset class="form-group border rounded p-2 ">
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">PN</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Birth Date</th>
+                <th scope="col" style="text-align-last: justify;">Actions
+                    <p-button (onClick)="openCreateUpdateTeacherModal(false)" label="Add Teacher" icon="pi pi-plus"
+                        styleClass="p-button-sm"></p-button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="teachers.length == 0">
+                <td colspan="6">There is no records...</td>
+            </tr>
+            <ng-container *ngIf="teachers.length != 0">
+                <tr *ngFor="let teacher of teachers">
+                    <td>{{teacher.PN}}</td>
+                    <td>{{teacher.FirstName}}</td>
+                    <td>{{teacher.LastName}}</td>
+                    <td>{{teacher.EMail}}</td>
+                    <td>{{teacher.BirthDate}}</td>
+                    <td>
+                        <button (click)="openCreateUpdateTeacherModal(true,teacher)" title="Edit" pButton pRipple
+                            type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
+                        <button (click)="openDeleteConfiramtionModal(teacher)" title="Delete" pButton pRipple
+                            type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger mx-2"></button>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</fieldset>
+
+
+
+<p-dialog [header]="isUpdateMode? 'Update Teacher': 'Add Teacher'" [(visible)]="createUpdateModalDisplay" [modal]="true"
+    [closable]="false" [style]="{width: '30vw'}">
+
+    <app-create-update-teacher (closeModalEvent)="onCreateUpdateModalClose($event)"
+        [mode]="isUpdateMode? 'Update':'Add'" [selectedTeacher]="selectedTeacher">
+    </app-create-update-teacher>
+
+</p-dialog>
+
+<p-dialog header="Delete Teacher" [(visible)]="deleteModalDisplay" [modal]="true" [style]="{width: '30vw'}">
+    <div class="row text-center">
+        <i class="pi pi-times-circle text-danger my-1" style="font-size: 3rem"></i>
+    </div>
+    <h4 class="text-center text-secondary my-2">Are you sure?</h4>
+    <ng-template pTemplate="footer">
+        <p-button (click)="deleteTeacher()" label="Yes" styleClass="p-button-text"></p-button>
+        <p-button (click)="deleteModalDisplay=false" label="No" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>

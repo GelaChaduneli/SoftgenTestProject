@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+.loading-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 555;
+    .center-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  }
+
+  tbody tr{
+    vertical-align: middle;
+  }
+
+ 

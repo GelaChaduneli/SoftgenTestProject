@@ -1,0 +1,49 @@
+<form [formGroup]="studentForm" (ngSubmit)="createUpdateStudent()">
+    <div class="mb-3">
+        <label for="PN" class="form-label">Personal Number</label>
+        <input type="text" formControlName="PN" class="form-control" id="PN"
+            [ngClass]="{ 'is-invalid': submitted && f.PN.errors }">
+        <div *ngIf="submitted && f.PN.errors" class="text-danger">
+            <div *ngIf="f.PN.errors.required">Personal number is required</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="FirstName" class="form-label">First Name</label>
+        <input type="text" formControlName="FirstName" class="form-control" id="FirstName"
+            [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }">
+        <div *ngIf="submitted && f.FirstName.errors" class="text-danger">
+            <div *ngIf="f.FirstName.errors.required">First name is required</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="LastName" class="form-label">Last Name</label>
+        <input type="text" formControlName="LastName" class="form-control" id="LastName"
+            [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }">
+        <div *ngIf="submitted && f.LastName.errors" class="text-danger">
+            <div *ngIf="f.LastName.errors.required">Last name is required</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="EMail" class="form-label">E-mail</label>
+        <input type="email" formControlName="EMail" class="form-control" id="EMail"
+            [ngClass]="{ 'is-invalid': submitted && f.EMail.errors }">
+        <div *ngIf="submitted && f.EMail.errors" class="text-danger">
+            <div *ngIf="f.EMail.errors.required">E-mail is required</div>
+            <div *ngIf="f.EMail.errors.email">Email must be a valid email address</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="BirthDate" class="form-label">Birth Date</label>
+        <input type="date" formControlName="BirthDate" class="form-control" id="BirthDate"
+            [ngClass]="{ 'is-invalid': submitted && f.BirthDate.errors }">
+        <div *ngIf="submitted && f.BirthDate.errors" class="text-danger">
+            <div *ngIf="f.BirthDate.errors.required">Birth date is required</div>
+        </div>
+    </div>
+    <div class="mt-2" style="float: right;">
+        <p-button type="submit" [icon]="mode == 'Add'?'pi pi-plus-circle':'pi pi-pencil'" [label]="mode"></p-button>
+        <p-button (onClick)="closeModal('')" type="button" icon="pi pi-times-circle" label="Close"
+            [style]="{'margin-left':'1em'}">
+        </p-button>
+    </div>
+</form>
