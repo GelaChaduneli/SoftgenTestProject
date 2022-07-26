@@ -39,7 +39,7 @@ export class GroupComponent implements OnInit {
       next: res => {
         this.groups = res;
       },
-      error: (error: any) => alert(error)
+      error: (error: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: error, sticky: true }); }
     });
   }
 
@@ -53,7 +53,7 @@ export class GroupComponent implements OnInit {
         this.fillGroupsTable();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Successfully deleted!' });
       },
-      error: (error: any) => alert(error),
+      error: (error: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: error, sticky: true }); },
       complete: () => {
         this.selectedGroup = null
         this.deleteModalDisplay = false
@@ -102,7 +102,7 @@ export class GroupComponent implements OnInit {
       }); break;
       case '': break;
       default: this.messageService.add({
-        severity: 'success', summary: 'Success', detail: message
+        severity: 'error', summary: 'Error', detail: message
       }); break;
     }
   }
