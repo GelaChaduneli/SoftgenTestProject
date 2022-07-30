@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { PrimeNGConfig } from 'primeng/api';
-import { LoadingService } from './core/loading.service';
+import { LoadingService } from './core/services/loading.service';
 
 @Component({
   selector: 'app-root',
