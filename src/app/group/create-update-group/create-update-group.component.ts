@@ -51,8 +51,7 @@ export class CreateUpdateGroupComponent implements OnInit {
     this.studentService.getStudents().subscribe({
       next: res => {
         this.students = res;
-      },
-      error: (error: any) => alert(error)
+      }
     })
   }
 
@@ -60,8 +59,7 @@ export class CreateUpdateGroupComponent implements OnInit {
     this.teacherService.getTeachers().subscribe({
       next: res => {
         this.teachers = res;
-      },
-      error: (error: any) => alert(error)
+      }
     })
   }
 
@@ -89,7 +87,6 @@ export class CreateUpdateGroupComponent implements OnInit {
         next: res => {
           this.closeModal('Successfully Updated')
         },
-        error: (error: any) => this.closeModal(error),
         complete: () => this.closeModal('')
       })
     } else {
@@ -97,7 +94,6 @@ export class CreateUpdateGroupComponent implements OnInit {
         next: res => {
           this.closeModal('Successfully Added')
         },
-        error: (error: any) => this.closeModal(error),
         complete: () => this.closeModal('')
       })
     }

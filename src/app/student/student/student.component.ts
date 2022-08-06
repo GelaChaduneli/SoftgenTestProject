@@ -6,8 +6,7 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.scss'],
-  providers: [MessageService]
+  styleUrls: ['./student.component.scss']
 })
 export class StudentComponent implements OnInit {
 
@@ -39,8 +38,7 @@ export class StudentComponent implements OnInit {
     this.studentService.getStudents().subscribe({
       next: res => {
         this.students = res;
-      },
-      error: (error: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: error, sticky: true }); }
+      }
     });
   }
 
@@ -54,7 +52,6 @@ export class StudentComponent implements OnInit {
         this.fillStudentsTable();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Successfully deleted!' });
       },
-      error: (error: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: error, sticky: true }); },
       complete: () => {
         this.selectedStudent = null
         this.deleteModalDisplay = false
@@ -102,9 +99,6 @@ export class StudentComponent implements OnInit {
         severity: 'success', summary: 'Success', detail: message
       }); break;
       case '': break;
-      default: this.messageService.add({
-        severity: 'error', summary: 'Error', detail: message
-      }); break;
     }
   }
 

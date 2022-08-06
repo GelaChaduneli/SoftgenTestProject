@@ -6,8 +6,7 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-teacher',
   templateUrl: './teacher.component.html',
-  styleUrls: ['./teacher.component.scss'],
-  providers: [MessageService]
+  styleUrls: ['./teacher.component.scss']
 })
 export class TeacherComponent implements OnInit {
 
@@ -40,7 +39,6 @@ export class TeacherComponent implements OnInit {
       next: res => {
         this.teachers = res;
       },
-      error: (error: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: error, sticky: true }); }
     });
   }
 
@@ -54,7 +52,6 @@ export class TeacherComponent implements OnInit {
         this.fillTeachersTable();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Successfully deleted!' });
       },
-      error: (error: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: error, sticky: true }); },
       complete: () => {
         this.selectedTeacher = null
         this.deleteModalDisplay = false
@@ -102,9 +99,6 @@ export class TeacherComponent implements OnInit {
         severity: 'success', summary: 'Success', detail: message
       }); break;
       case '': break;
-      default: this.messageService.add({
-        severity: 'error', summary: 'Error', detail: message
-      }); break;
     }
   }
 

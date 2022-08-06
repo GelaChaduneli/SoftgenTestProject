@@ -13,7 +13,7 @@ export class GroupService {
   constructor(private http: HttpClient) { }
 
   getGroups(): Observable<Group[]> {
-    return this.http.get<Group[]>(`${environment.apiURL}groups`);
+    return this.http.get<Group[]>(`${environment.apiURL}groups`)
   }
 
 

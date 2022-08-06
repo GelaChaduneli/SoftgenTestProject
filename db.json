@@ -31,12 +31,20 @@
       "EMail": "asd@gmail.com",
       "BirthDate": "2022-07-13",
       "id": 18
+    },
+    {
+      "PN": "123123",
+      "FirstName": "asdasd",
+      "LastName": "2asd",
+      "EMail": "asd@gmail.com",
+      "BirthDate": "2022-07-05",
+      "id": 19
     }
   ],
   "teachers": [
     {
       "PN": "12312322414",
-      "FirstName": "teacher13",
+      "FirstName": "teacher1",
       "LastName": "lastnasd",
       "EMail": "asjdkl@jasd.ge",
       "BirthDate": "2022-04-06",

@@ -62,7 +62,6 @@ export class CreateUpdateTeacherComponent implements OnInit {
         next: res => {
           this.closeModal('Successfully Updated')
         },
-        error: (error: any) => this.closeModal(error),
         complete: () => this.closeModal('')
       })
     } else {
@@ -70,7 +69,6 @@ export class CreateUpdateTeacherComponent implements OnInit {
         next: res => {
           this.closeModal('Successfully Added')
         },
-        error: (error: any) => this.closeModal(error),
         complete: () => this.closeModal('')
       })
     }

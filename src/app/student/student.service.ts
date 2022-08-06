@@ -13,7 +13,7 @@ export class StudentService {
   constructor(private http: HttpClient) { }
 
   getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(`${environment.apiURL}students`);
+    return this.http.get<Student[]>(`${environment.apiURL}students`)
   }
 
 
