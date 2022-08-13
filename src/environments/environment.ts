@@ -15,6 +15,12 @@ export const environment = {
  */
 export const PROJECT_NAME = packageInfo.name;
 
+export class Loading {
+  public static isLoadingForGet = false;
+  public static isLoadingForRest = false;
+}
+
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

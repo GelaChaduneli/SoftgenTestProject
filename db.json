@@ -1,28 +1,12 @@
 {
   "students": [
     {
-      "PN": "09090909090",
-      "FirstName": "Giorgi",
-      "LastName": "giorgadze",
-      "EMail": "incos@asd",
-      "BirthDate": "2022-07-20",
-      "id": 11
-    },
-    {
       "PN": "12312322",
       "FirstName": "asdasd",
-      "LastName": "sd",
+      "LastName": "zczczczc",
       "EMail": "asd@gmail.com",
       "BirthDate": "2022-07-13",
       "id": 14
-    },
-    {
-      "PN": "123123ddd",
-      "FirstName": "asdasd",
-      "LastName": "Chaghjk",
-      "EMail": "asd@gmail.com",
-      "BirthDate": "2022-07-13",
-      "id": 17
     },
     {
       "PN": "456456",
@@ -43,34 +27,58 @@
   ],
   "teachers": [
     {
-      "PN": "12312322414",
-      "FirstName": "teacher1",
-      "LastName": "lastnasd",
-      "EMail": "asjdkl@jasd.ge",
-      "BirthDate": "2022-04-06",
-      "id": 1
-    },
-    {
-      "PN": "12312322414",
-      "FirstName": "პაციენტი05",
-      "LastName": "Chaduneli",
-      "EMail": "asdli888@gmail.com",
-      "BirthDate": "2022-07-29",
-      "id": 2
-    },
-    {
       "PN": "123123ddd",
       "FirstName": "zczxc",
-      "LastName": "131d12d",
+      "LastName": "131d12dddd",
       "EMail": "incoming@insa-rennes.fr",
       "BirthDate": "2022-06-28",
       "id": 3
+    },
+    {
+      "PN": "asd",
+      "FirstName": "das",
+      "LastName": "dda",
+      "EMail": "ssasd2@dasd",
+      "BirthDate": "2022-08-23",
+      "id": 4
+    },
+    {
+      "PN": "109230918230",
+      "FirstName": "testTeacher",
+      "LastName": "jlkajcla",
+      "EMail": "asdas@faf",
+      "BirthDate": "2022-08-19",
+      "id": 5
+    },
+    {
+      "PN": "asd132131",
+      "FirstName": "asdads",
+      "LastName": "czcxzc",
+      "EMail": "asd@czxc",
+      "BirthDate": "2022-08-11",
+      "id": 6
+    },
+    {
+      "PN": "asd132131",
+      "FirstName": "D11D1D",
+      "LastName": "1D1D",
+      "EMail": "zxc#ffsa@da",
+      "BirthDate": "2022-08-16",
+      "id": 7
+    },
+    {
+      "PN": "162837126387",
+      "FirstName": "teacher1",
+      "LastName": "dads",
+      "EMail": "asdsdff@da",
+      "BirthDate": "2022-08-16",
+      "id": 8
     }
   ],
   "groups": [
     {
       "GroupNumber": "2",
-      "GroupName": "group22",
+      "GroupName": "group2",
       "Students": [
         {
           "PN": "09090909090",
@@ -105,6 +113,14 @@
           "EMail": "asjdkl@jasd.ge",
           "BirthDate": "2022-04-06",
           "id": 1
+        },
+        {
+          "PN": "12312322414",
+          "FirstName": "პაციენტი05",
+          "LastName": "Chaduneli",
+          "EMail": "asdli888@gmail.com",
+          "BirthDate": "2022-07-29",
+          "id": 2
         }
       ],
       "id": 2

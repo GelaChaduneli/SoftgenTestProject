@@ -41,11 +41,34 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngIf="teachers.length == 0">
+            <ng-container *ngIf="isLoadingForGet">
+                <tr *ngFor="let item of [0,1,2,3,4,5]">
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                </tr>
+            </ng-container>
+
+            <tr *ngIf="teachers.length == 0 && !isLoadingForGet">
                 <td colspan="6">There is no records...</td>
             </tr>
-            <ng-container *ngIf="teachers.length != 0">
-                <tr *ngFor="let teacher of teachers">
+            <ng-container *ngIf="teachers.length != 0 && !isLoadingForGet">
+                <tr *ngFor="let teacher of teachers; trackBy:trackByTeacher">
                     <td>{{teacher.PN}}</td>
                     <td>{{teacher.FirstName}}</td>
                     <td>{{teacher.LastName}}</td>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../teacher';
 import { TeacherService } from '../teacher.service';
 import { MessageService } from 'primeng/api';
+import { Loading } from 'src/environments/environment';
 
 @Component({
   selector: 'app-teacher',
@@ -28,6 +29,13 @@ export class TeacherComponent implements OnInit {
   filterValue: Teacher;
 
 
+
+  public get isLoadingForGet(): boolean {
+    return Loading.isLoadingForGet
+  }
+
+
+
   constructor(private teacherService: TeacherService, private messageService: MessageService) { }
 
   ngOnInit(): void {
@@ -40,6 +48,10 @@ export class TeacherComponent implements OnInit {
         this.teachers = res;
       },
     });
+  }
+
+  trackByTeacher(index: number, name: Teacher): number {
+    return name.id;
   }
 
   filterTeacher(event) {

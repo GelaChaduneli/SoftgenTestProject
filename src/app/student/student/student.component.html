@@ -50,7 +50,7 @@
                 <td colspan="6">There is no records...</td>
             </tr>
             <ng-container *ngIf="students.length != 0">
-                <tr *ngFor="let student of students">
+                <tr *ngFor="let student of students; trackBy:trackByStudent">
                     <td>{{student.PN}}</td>
                     <td>{{student.FirstName}}</td>
                     <td>{{student.LastName}}</td>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { PrimeNGConfig } from 'primeng/api';
 import { LoadingService } from './core/services/loading.service';
+import { Loading } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,15 @@ import { LoadingService } from './core/services/loading.service';
 })
 export class AppComponent implements OnInit {
   title = 'SoftgenTestProject';
-  loading: boolean = false;
+
+  public get isLoadingForGet(): boolean {
+    return Loading.isLoadingForGet
+  }
+
+  public get isLoadingForRest(): boolean {
+    return Loading.isLoadingForRest
+  }
+
 
   constructor(private primengConfig: PrimeNGConfig, private _loading: LoadingService) { }
 
@@ -25,10 +34,15 @@ export class AppComponent implements OnInit {
    * display of the loading spinner.
    */
   listenToLoading(): void {
-    this._loading.loadingSub
+    this._loading.loadingSubForRest
       .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
       .subscribe((loading) => {
-        this.loading = loading;
+        Loading.isLoadingForRest = loading;
+      });
+    this._loading.loadingSubForGet
+      .pipe(delay(0))
+      .subscribe((loading) => {
+        Loading.isLoadingForGet = loading;
       });
   }
 }

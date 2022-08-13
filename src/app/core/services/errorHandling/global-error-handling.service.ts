@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
-import { MessageService } from 'primeng/api';
 import { LoggingService } from '../logging.service';
 import { ErrorService } from './error.service';
 
@@ -15,7 +14,7 @@ export class GlobalErrorHandler implements ErrorHandler {
 
         const errorService = this.injector.get(ErrorService);
         const logger = this.injector.get(LoggingService);
-        const notifier = this.injector.get(MessageService);
+        // const notifier = this.injector.get(MessageService);
 
         let message;
         let stackTrace;

@@ -11,11 +11,12 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DropdownModule } from 'primeng/dropdown';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @NgModule({
   declarations: [
     TeacherComponent,
-    CreateUpdateTeacherComponent
+    CreateUpdateTeacherComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule,
     ToastModule,
     AutoCompleteModule,
-    DropdownModule
+    DropdownModule,
+    SkeletonModule,
   ]
 })
 export class TeacherModule { }

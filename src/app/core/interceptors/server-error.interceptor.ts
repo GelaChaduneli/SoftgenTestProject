@@ -21,7 +21,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
 
         return next.handle(request).pipe(
             catchError((error: HttpErrorResponse) => {
-                this._loading.setLoading(false, request.url);
+                this._loading.setLoading(false, request.url, request.method);
                 if (error.status === 401) {
                     return null;
                     // refresh token

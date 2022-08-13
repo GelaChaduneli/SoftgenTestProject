@@ -6,11 +6,12 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoadingService {
-  loadingSub: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  loadingSubForGet: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  loadingSubForRest: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   /**
    * Contains in-progress loading requests
    */
-  loadingMap: Map<string, boolean> = new Map<string, boolean>();
+  loadingMap: Map<string, { loading: boolean, method: string }> = new Map<string, { loading: boolean, method: string }>();
 
   constructor() { }
 
@@ -23,18 +24,23 @@ export class LoadingService {
    * @param loading {boolean}
    * @param url {string}
    */
-  setLoading(loading: boolean, url: string): void {
+  setLoading(loading: boolean, url: string, method: string): void {
     if (!url) {
       throw new Error('The request URL must be provided to the LoadingService.setLoading function');
     }
     if (loading === true) {
-      this.loadingMap.set(url, loading);
-      this.loadingSub.next(true);
+      this.loadingMap.set(url, { loading, method });
+      if (method == 'GET') {
+        this.loadingSubForGet.next(true);
+      } else {
+        this.loadingSubForRest.next(true);
+      }
     } else if (loading === false && this.loadingMap.has(url)) {
       this.loadingMap.delete(url);
     }
     if (this.loadingMap.size === 0) {
-      this.loadingSub.next(false);
+      this.loadingSubForGet.next(false);
+      this.loadingSubForRest.next(false);
     }
   }
 }

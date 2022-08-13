@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Teacher } from '../teacher';
 import { TeacherService } from '../teacher.service';
@@ -6,7 +6,8 @@ import { TeacherService } from '../teacher.service';
 @Component({
   selector: 'app-create-update-teacher',
   templateUrl: './create-update-teacher.component.html',
-  styleUrls: ['./create-update-teacher.component.scss']
+  styleUrls: ['./create-update-teacher.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateUpdateTeacherComponent implements OnInit {
 

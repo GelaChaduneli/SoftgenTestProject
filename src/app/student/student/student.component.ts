@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Student } from '../student';
 import { StudentService } from '../student.service';
 import { MessageService } from 'primeng/api';
@@ -40,6 +40,10 @@ export class StudentComponent implements OnInit {
         this.students = res;
       }
     });
+  }
+
+  trackByStudent(index: number, student: Student): number {
+    return student.id;
   }
 
   filterStudent(event) {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Student } from 'src/app/student/student';
 import { StudentService } from 'src/app/student/student.service';
@@ -10,7 +10,8 @@ import { GroupService } from '../group.service';
 @Component({
   selector: 'app-create-update-group',
   templateUrl: './create-update-group.component.html',
-  styleUrls: ['./create-update-group.component.scss']
+  styleUrls: ['./create-update-group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateUpdateGroupComponent implements OnInit {
 

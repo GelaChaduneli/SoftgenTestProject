@@ -23,12 +23,12 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     ) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this._loading.setLoading(true, request.url);
+        this._loading.setLoading(true, request.url, request.method);
         return next.handle(request)
             .pipe(
-                map<HttpEvent<any>, any>((evt: HttpEvent<any>) => {
+                map((evt: HttpEvent<any>) => {
                     if (evt instanceof HttpResponse) {
-                        this._loading.setLoading(false, request.url);
+                        this._loading.setLoading(false, request.url, request.method);
                     }
                     return evt;
                 }));
