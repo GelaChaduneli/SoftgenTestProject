@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Student } from '../student';
 import { StudentService } from '../student.service';
-import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-student',
@@ -28,7 +28,7 @@ export class StudentComponent implements OnInit {
   filterValue: Student;
 
 
-  constructor(private studentService: StudentService, private messageService: MessageService) { }
+  constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.fillStudentsTable();
@@ -54,7 +54,6 @@ export class StudentComponent implements OnInit {
     this.studentService.deleteStudent(this.selectedStudent.id).subscribe({
       next: res => {
         this.fillStudentsTable();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Successfully deleted!' });
       },
       complete: () => {
         this.selectedStudent = null
@@ -96,12 +95,8 @@ export class StudentComponent implements OnInit {
     this.fillStudentsTable();
 
     switch (message) {
-      case 'Successfully Updated': this.messageService.add({
-        severity: 'success', summary: 'Success', detail: message
-      }); break;
-      case 'Successfully Added': this.messageService.add({
-        severity: 'success', summary: 'Success', detail: message
-      }); break;
+      case 'Successfully Updated': console.log('Success--->', message); break;
+      case 'Successfully Added': console.log('Success--->', message); break;
       case '': break;
     }
   }

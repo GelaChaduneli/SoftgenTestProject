@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-group',
@@ -27,7 +26,7 @@ export class GroupComponent implements OnInit {
   filterValue: Group;
 
 
-  constructor(private groupService: GroupService, private messageService: MessageService) { }
+  constructor(private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.fillGroupsTable();
@@ -49,7 +48,6 @@ export class GroupComponent implements OnInit {
     this.groupService.deleteGroup(this.selectedGroup.id).subscribe({
       next: res => {
         this.fillGroupsTable();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Successfully deleted!' });
       },
       complete: () => {
         this.selectedGroup = null
@@ -91,12 +89,8 @@ export class GroupComponent implements OnInit {
     this.fillGroupsTable();
 
     switch (message) {
-      case 'Successfully Updated': this.messageService.add({
-        severity: 'success', summary: 'Success', detail: message
-      }); break;
-      case 'Successfully Added': this.messageService.add({
-        severity: 'success', summary: 'Success', detail: message
-      }); break;
+      case 'Successfully Updated': console.log('Success--->', message); break;
+      case 'Successfully Added': console.log('Success--->', message); break;
       case '': break;
     }
   }

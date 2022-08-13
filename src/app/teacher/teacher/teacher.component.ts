@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../teacher';
 import { TeacherService } from '../teacher.service';
-import { MessageService } from 'primeng/api';
 import { Loading } from 'src/environments/environment';
 
 @Component({
@@ -36,7 +35,7 @@ export class TeacherComponent implements OnInit {
 
 
 
-  constructor(private teacherService: TeacherService, private messageService: MessageService) { }
+  constructor(private teacherService: TeacherService) { }
 
   ngOnInit(): void {
     this.fillTeachersTable();
@@ -62,7 +61,6 @@ export class TeacherComponent implements OnInit {
     this.teacherService.deleteTeacher(this.selectedTeacher.id).subscribe({
       next: res => {
         this.fillTeachersTable();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Successfully deleted!' });
       },
       complete: () => {
         this.selectedTeacher = null
@@ -104,12 +102,8 @@ export class TeacherComponent implements OnInit {
     this.fillTeachersTable();
 
     switch (message) {
-      case 'Successfully Updated': this.messageService.add({
-        severity: 'success', summary: 'Success', detail: message
-      }); break;
-      case 'Successfully Added': this.messageService.add({
-        severity: 'success', summary: 'Success', detail: message
-      }); break;
+      case 'Successfully Updated': console.log('Success--->', message); break;
+      case 'Successfully Added': console.log('Success--->', message); break;
       case '': break;
     }
   }

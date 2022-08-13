@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import { LoggingService } from '../logging.service';
 import { ErrorService } from './error.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
@@ -14,7 +15,6 @@ export class GlobalErrorHandler implements ErrorHandler {
 
         const errorService = this.injector.get(ErrorService);
         const logger = this.injector.get(LoggingService);
-        // const notifier = this.injector.get(MessageService);
 
         let message;
         let stackTrace;
@@ -24,14 +24,20 @@ export class GlobalErrorHandler implements ErrorHandler {
             let errorModel = errorService.getServerMessage(error);
             message = errorModel.errorText
             stackTrace = errorService.getServerStack(error);
-            // notifier.add({ severity: 'error', summary: errorModel.errorText, detail: errorModel.errorDescription, sticky: true });
-            alert(errorModel.errorDescription)
+            Swal.fire({
+                icon: 'error',
+                title: errorModel.errorText,
+                text: errorModel.errorDescription
+            })
         } else {
             // Client Error
             message = errorService.getClientMessage(error);
             stackTrace = errorService.getClientStack(error);
-            // notifier.add({ severity: 'error', summary: 'Error', detail: message, sticky: true });
-            alert(message)
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: message
+            })
         }
 
         // Always log errors

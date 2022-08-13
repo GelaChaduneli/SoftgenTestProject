@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 
+//SweatAlert2
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 // PrimeNG
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -16,8 +18,6 @@ import { CacheInterceptor } from './core/interceptors/cache.interceptor';
 import { DialogModule } from 'primeng/dialog';
 import { GlobalErrorHandler } from './core/services/errorHandling/global-error-handling.service';
 import { ServerErrorInterceptor } from './core/interceptors/server-error.interceptor';
-import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -33,14 +33,13 @@ import { ToastModule } from 'primeng/toast';
     HttpClientModule,
     ProgressSpinnerModule,
     DialogModule,
-    ToastModule
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true },
-    MessageService,
   ],
   bootstrap: [AppComponent]
 })
