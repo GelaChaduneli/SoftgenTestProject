@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
+import { Loading } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-group',
@@ -10,7 +12,6 @@ import { GroupService } from '../group.service';
 export class GroupComponent implements OnInit {
 
   createUpdateModalDisplay: boolean = false;
-  deleteModalDisplay: boolean = false;
 
   isUpdateMode: boolean = false;
 
@@ -25,6 +26,10 @@ export class GroupComponent implements OnInit {
   searchField: { name: string } = { name: 'GroupNumber' };
   filterValue: Group;
 
+
+  get isLoadingForGet(): boolean {
+    return Loading.isLoadingForGet
+  }
 
   constructor(private groupService: GroupService) { }
 
@@ -51,7 +56,6 @@ export class GroupComponent implements OnInit {
       },
       complete: () => {
         this.selectedGroup = null
-        this.deleteModalDisplay = false
       }
     })
   }
@@ -80,7 +84,19 @@ export class GroupComponent implements OnInit {
 
   openDeleteConfiramtionModal(group: Group) {
     this.selectedGroup = group;
-    this.deleteModalDisplay = true;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteGroup();
+      }
+    })
   }
 
   onCreateUpdateModalClose(message) {

@@ -96,14 +96,3 @@
     </app-create-update-teacher>
 
 </p-dialog>
-
-<p-dialog header="Delete Teacher" [(visible)]="deleteModalDisplay" [modal]="true" [style]="{width: '30vw'}">
-    <div class="row text-center">
-        <i class="pi pi-times-circle text-danger my-1" style="font-size: 3rem"></i>
-    </div>
-    <h4 class="text-center text-secondary my-2">Are you sure?</h4>
-    <ng-template pTemplate="footer">
-        <p-button (click)="deleteTeacher()" label="Yes" styleClass="p-button-text"></p-button>
-        <p-button (click)="deleteModalDisplay=false" label="No" styleClass="p-button-text"></p-button>
-    </ng-template>
-</p-dialog>

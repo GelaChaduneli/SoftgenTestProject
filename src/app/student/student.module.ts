@@ -14,7 +14,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
-
+import { SkeletonModule } from 'primeng/skeleton';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import { MessageModule } from 'primeng/message';
     DropdownModule,
     MessagesModule,
     MessageModule,
+    SkeletonModule
   ]
 })
 export class StudentModule { }

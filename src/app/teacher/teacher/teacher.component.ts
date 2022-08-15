@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Teacher } from '../teacher';
 import { TeacherService } from '../teacher.service';
 import { Loading } from 'src/environments/environment';
+import Swal from 'sweetalert2';
+import { Unsubscriber } from 'src/app/core/decorators/unsubscriber.decorator';
+import { interval, Subscription } from 'rxjs';
 
+@Unsubscriber(true)
 @Component({
   selector: 'app-teacher',
   templateUrl: './teacher.component.html',
   styleUrls: ['./teacher.component.scss']
 })
-export class TeacherComponent implements OnInit {
+export class TeacherComponent implements OnInit, OnDestroy {
 
   createUpdateModalDisplay: boolean = false;
-  deleteModalDisplay: boolean = false;
 
   isUpdateMode: boolean = false;
 
@@ -29,7 +32,7 @@ export class TeacherComponent implements OnInit {
 
 
 
-  public get isLoadingForGet(): boolean {
+  get isLoadingForGet(): boolean {
     return Loading.isLoadingForGet
   }
 
@@ -37,7 +40,9 @@ export class TeacherComponent implements OnInit {
 
   constructor(private teacherService: TeacherService) { }
 
+
   ngOnInit(): void {
+    this.intervalFuncSub$();
     this.fillTeachersTable();
   }
 
@@ -64,7 +69,6 @@ export class TeacherComponent implements OnInit {
       },
       complete: () => {
         this.selectedTeacher = null
-        this.deleteModalDisplay = false
       }
     })
   }
@@ -93,7 +97,19 @@ export class TeacherComponent implements OnInit {
 
   openDeleteConfiramtionModal(teacher: Teacher) {
     this.selectedTeacher = teacher;
-    this.deleteModalDisplay = true;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteTeacher();
+      }
+    })
   }
 
   onCreateUpdateModalClose(message) {
@@ -108,4 +124,13 @@ export class TeacherComponent implements OnInit {
     }
   }
 
+  intervalFuncSub$(): Subscription {
+    return interval(1000).subscribe((val) => {
+      console.log('interval--->', val)
+    })
+  }
+
+  ngOnDestroy(): void {
+
+  }
 }

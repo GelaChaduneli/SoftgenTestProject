@@ -12,7 +12,7 @@ import { ToastModule } from 'primeng/toast';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
-
+import { SkeletonModule } from 'primeng/skeleton';
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     ToastModule,
     AutoCompleteModule,
     DropdownModule,
-    MultiSelectModule
+    MultiSelectModule,
+    SkeletonModule,
   ]
 })
 export class GroupModule { }

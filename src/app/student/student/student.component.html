@@ -46,10 +46,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngIf="students.length == 0">
+            <ng-container *ngIf="isLoadingForGet">
+                <tr *ngFor="let item of [0,1,2,3,4,5]">
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                    <td>
+                        <p-skeleton></p-skeleton>
+                    </td>
+                </tr>
+            </ng-container>
+            <tr *ngIf="students.length == 0 && !isLoadingForGet">
                 <td colspan="6">There is no records...</td>
             </tr>
-            <ng-container *ngIf="students.length != 0">
+            <ng-container *ngIf="students.length != 0 && !isLoadingForGet">
                 <tr *ngFor="let student of students; trackBy:trackByStudent">
                     <td>{{student.PN}}</td>
                     <td>{{student.FirstName}}</td>
@@ -77,15 +99,4 @@
         [mode]="isUpdateMode? 'Update':'Add'" [selectedStudent]="selectedStudent">
     </app-create-update-student>
 
-</p-dialog>
-
-<p-dialog header="Delete Student" [(visible)]="deleteModalDisplay" [modal]="true" [style]="{width: '30vw'}">
-    <div class="row text-center">
-        <i class="pi pi-times-circle text-danger my-1" style="font-size: 3rem"></i>
-    </div>
-    <h4 class="text-center text-secondary my-2">Are you sure?</h4>
-    <ng-template pTemplate="footer">
-        <p-button (click)="deleteStudent()" label="Yes" styleClass="p-button-text"></p-button>
-        <p-button (click)="deleteModalDisplay=false" label="No" styleClass="p-button-text"></p-button>
-    </ng-template>
 </p-dialog>

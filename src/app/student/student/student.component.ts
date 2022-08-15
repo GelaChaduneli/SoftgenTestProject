@@ -1,6 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Student } from '../student';
 import { StudentService } from '../student.service';
+import { Loading } from 'src/environments/environment';
+import Swal from 'sweetalert2';
+import { UnsubscriberClass } from 'src/app/core/global-classes/unsubscriber.directive';
 
 
 @Component({
@@ -8,10 +11,10 @@ import { StudentService } from '../student.service';
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.scss']
 })
-export class StudentComponent implements OnInit {
+
+export class StudentComponent extends UnsubscriberClass implements OnInit {
 
   createUpdateModalDisplay: boolean = false;
-  deleteModalDisplay: boolean = false;
 
   isUpdateMode: boolean = false;
 
@@ -27,19 +30,27 @@ export class StudentComponent implements OnInit {
   searchField: { name: string } = { name: 'PN' };
   filterValue: Student;
 
+  get isLoadingForGet(): boolean {
+    return Loading.isLoadingForGet
+  }
 
-  constructor(private studentService: StudentService) { }
+
+  constructor(private studentService: StudentService) {
+    super();
+  }
+
 
   ngOnInit(): void {
     this.fillStudentsTable();
   }
 
   fillStudentsTable() {
-    this.studentService.getStudents().subscribe({
+    const getStudentsSub$ = this.studentService.getStudents().subscribe({
       next: res => {
         this.students = res;
       }
     });
+    this.subscription$.add(getStudentsSub$)
   }
 
   trackByStudent(index: number, student: Student): number {
@@ -51,15 +62,15 @@ export class StudentComponent implements OnInit {
   }
 
   deleteStudent() {
-    this.studentService.deleteStudent(this.selectedStudent.id).subscribe({
+    const deleteStudentSubscription$ = this.studentService.deleteStudent(this.selectedStudent.id).subscribe({
       next: res => {
         this.fillStudentsTable();
       },
       complete: () => {
         this.selectedStudent = null
-        this.deleteModalDisplay = false
       }
     })
+    this.subscription$.add(deleteStudentSubscription$);
   }
 
   openCreateUpdateStudentModal(isUpdate: boolean, student?: Student) {
@@ -86,7 +97,19 @@ export class StudentComponent implements OnInit {
 
   openDeleteConfiramtionModal(student: Student) {
     this.selectedStudent = student;
-    this.deleteModalDisplay = true;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteStudent();
+      }
+    })
   }
 
   onCreateUpdateModalClose(message) {
@@ -100,5 +123,8 @@ export class StudentComponent implements OnInit {
       case '': break;
     }
   }
+
+
+
 
 }
